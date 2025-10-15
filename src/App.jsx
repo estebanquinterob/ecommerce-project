@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetails from "./pages/ProductDetails";
 import AboutPage from "./pages/AboutPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
             Dentro de ProductsPage, puedes acceder a ella como una variable normal */}
           <Route path="/products" element={ <ProductsPage />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>

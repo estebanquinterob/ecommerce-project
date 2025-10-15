@@ -17,8 +17,13 @@ export function CartProvider({ children }) {
     setCart([]);
   };
 
+   // Eliminar un producto por ID
+   const removeFromCart = (id) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
   // Valor compartido para toda la app
-  const value = { cart, addToCart, clearCart };
+  const value = { cart, addToCart, removeFromCart, clearCart };
 
   return (
     <CartContext.Provider value={value}>
