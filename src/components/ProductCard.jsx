@@ -1,51 +1,72 @@
-/**
- * ProductCard.jsx - Milestone 2
- * This component is responsible for rendering individual product cards.
- * It receives product data as props and displays the product image, title, price, and an "Add to Cart" button.
- */
-
-import { useState } from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Heart, ShoppingCart } from "lucide-react"; // íconos opcionales si tienes lucide-react instalado
+import { useCart } from "../context/CartContext";
 
 function ProductCard({ product, onAddToCart }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { addToCart } = useCart(); // usamos el custom hook useCart para obtener la funcion addToCart
 
   return (
-
-    <div className="flex flex-col justify-evenly items-center gap-3 p-6 bg-white shadow-md rounded-lg min-h-[250px]">
+    <div
+      className="flex flex-col justify-between items-center bg-white rounded-2xl shadow-md 
+                 hover:shadow-lg transition-all duration-300 p-5 group"
+    >
       {/* Product Image */}
-      <img
-        src={product.image}
-        alt={product.title}
-        className="w-50 h-50 object-contain mb-4"
-      />
+      <div className="flex justify-center items-center h-48 w-full mb-4 overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
 
-      {/* Product Title */}
-      <h3 className="text-lg text-center font-bold text-gray-800">{product.title}</h3>
+      {/* Product Info */}
+      <h3 className="text-center font-semibold text-gray-800 text-md mb-2 line-clamp-2">
+        {product.title}
+      </h3>
+      <p className="text-blue-600 font-bold text-lg mb-4">
+        ${product.price.toFixed(2)}
+      </p>
 
-      {/* Product Price */}
-      <p className="text-gray-600">${product.price.toFixed(2)}</p>
-
-      <div className='flex gap-4'>
-        {/* Add to Cart Button */}
+      {/* Action Buttons */}
+      <div className="flex gap-3">
         <button
-          onClick={() => onAddToCart(product)}
-          className="mt-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700"
+          onClick={() => addToCart(product)} // llamamos a la funcion addToCart del contexto, solo aqui en productcard y ya no se llamara o importara en productspage
+          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full 
+                     hover:bg-blue-700 transition-all duration-300"
         >
+          <ShoppingCart size={18} />
           Add to Cart
         </button>
 
-        {/* Favorite Button */}
         <button
-          onClick={() => setIsFavorite(!isFavorite)} // Toggle state
-          className={`mt-2 py-1 px-3 rounded ${
-            isFavorite ? "bg-green-500" : "bg-gray-300"
-          }`}
+          onClick={() => setIsFavorite(!isFavorite)}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 
+                      ${isFavorite 
+                        ? "bg-pink-500 text-white hover:bg-pink-600" 
+                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                      }`}
         >
-          Favorite
+          <Heart
+            size={18}
+            fill={isFavorite ? "currentColor" : "none"}
+            stroke="currentColor"
+          />
+          {isFavorite ? "Saved" : ""}
         </button>
+
+        {/* View Details */}
+        <Link
+          to={`/product/${product.id}`}
+          className="flex items-center gap-2 bg-gray-100 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-200 transition-all"
+        >
+         Details
+        </Link>
       </div>
     </div>
   );
 }
 
 export default ProductCard;
+

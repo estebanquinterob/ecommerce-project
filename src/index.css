@@ -14,3 +14,17 @@ body {
   color: #333;
   box-sizing: border-box;
 }
+
+/* Utility for centering loading text */
+.text-center {
+  text-align: center;
+}
+
+/* Additional product card styling */
+.hovereffect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hovereffect:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
