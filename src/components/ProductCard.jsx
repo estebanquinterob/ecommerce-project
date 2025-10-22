@@ -10,7 +10,7 @@ function ProductCard({ product, onAddToCart }) {
   return (
     <div
       className="flex flex-col justify-between items-center bg-white rounded-2xl shadow-md 
-                 hover:shadow-lg transition-all duration-300 p-5 group"
+                 hover:shadow-lg transition-all duration-300 p-5 group hovereffect hovereffect:hover"
     >
       {/* Product Image */}
       <div className="flex justify-center items-center h-48 w-full mb-4 overflow-hidden">
