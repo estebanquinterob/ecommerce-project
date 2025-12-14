@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Heart, ShoppingCart } from "lucide-react"; // íconos opcionales si tienes lucide-react instalado
 import { useCart } from "../context/CartContext";
 
-function ProductCard({ product, onAddToCart }) {
+function ProductCard({ product, addToCart }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const { addToCart } = useCart(); // usamos el custom hook useCart para obtener la funcion addToCart
 
