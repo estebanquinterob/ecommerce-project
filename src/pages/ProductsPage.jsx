@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import Filters from "../components/Filters";
 
-function ProductsPage({ onAddToCart }) {  // se pueden pasar funciones como props en este caso la funcion es handleAddToCart que se creo en app.jsx y se paso alla en ProductsPage, y aqui se pone como un prop
+function ProductsPage() {  // se pueden pasar funciones como props en este caso la funcion es handleAddToCart que se creo en app.jsx y se paso alla en ProductsPage, y aqui se pone como un prop
 
   // State for storing products
   const [products, setProducts] = useState([]);
