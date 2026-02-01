@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
   );
 }
 
-// Custom hook para usar el contexto fácilmente
+// Custom hook para usar el contexto fácilmente -- esto debo moverlo a otro archivo separado
 export function useCart() {
   return useContext(CartContext);
 }
